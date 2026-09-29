@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Canvas Portfolio</title>
+<style>
+    body {
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        background-image: url(./images/canvas\ back.png);
+        background-size: cover;
+        color: #5e5a9d;
+        font-size: 10px;
+        margin: 0;
+        padding: 5px;
+        text-align: center;
+    }
+    
+
+    .canvas-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 140px;
+    }
+
+    .canvas-wrapper {
+        background: #fff;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    canvas {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 8px 16px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        background-color: #4b4c81;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background-color: #93b9d2;
+    }
+
+    .controls {
+        margin-bottom: 10px;
+    }
+     .back-container {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 300;
+    }
+
+    .back-button {
+      width: 160px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+    }
+
+      .decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20; 
+  pointer-events: none;
+}
+
+.decor img {
+  width: 1550px;
+  height: 720px;
+}
+</style>
+</head>
+<body>
+
+<div class="canvas-container">
+
+    <!-- Canvas 1: Star Decoration -->
+    <div class="canvas-wrapper">
+        <h2>Decorate the Sky</h2>
+        <div class="controls">
+            <button onclick="clearStarCanvas()">Clear Sky</button>
+        </div>
+        <canvas id="starCanvas" width="400" height="300">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+    </div>
+
+    <!-- Canvas 2: Free Drawing -->
+    <div class="canvas-wrapper">
+        <h2>Draw with Pen</h2>
+        <div class="controls">
+            <button onclick="clearDrawCanvas()">Clear Drawing</button>
+        </div>
+        <canvas id="drawCanvas" width="400" height="300">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+    </div>
+
+</div>
+<div class="decor">
+    
+        <img src="images/canvas decor.png">
+      
+    </div>
+      <div class="back-container">
+      <a href="Portofolio.html">
+        <img src="images/back button.png" alt="Back" class="back-button">
+      </a>
+    </div>
+
+<script>
+const starCanvas = document.getElementById("starCanvas");
+const starCtx = starCanvas.getContext("2d");
+
+const bgImg = new Image();
+bgImg.src = "./images/canvas bg.png"; 
+bgImg.onload = function() {
+    starCtx.drawImage(bgImg, 0, 0, starCanvas.width, starCanvas.height);
+}
+
+// Star image
+const starImg = new Image();
+starImg.src = "./images/star.png"; 
+
+const STAR_WIDTH = 40;
+const STAR_HEIGHT = 40;
+
+starCanvas.addEventListener("click", (event) => {
+    if (!starImg.complete) return;
+
+    const x = event.offsetX - STAR_WIDTH / 2;
+    const y = event.offsetY - STAR_HEIGHT / 2;
+
+    starCtx.drawImage(starImg, x, y, STAR_WIDTH, STAR_HEIGHT);
+});
+
+function clearStarCanvas() {
+    starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+    starCtx.drawImage(bgImg, 0, 0, starCanvas.width, starCanvas.height);
+}
+
+const drawCanvas = document.getElementById("drawCanvas");
+const drawCtx = drawCanvas.getContext("2d");
+
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+drawCanvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+});
+
+drawCanvas.addEventListener("mousemove", (e) => {
+    if (!isDrawing) return;
+    drawCtx.strokeStyle = "#000"; 
+    drawCtx.lineWidth = 2;
+    drawCtx.lineCap = "round";
+
+    drawCtx.beginPath();
+    drawCtx.moveTo(lastX, lastY);
+    drawCtx.lineTo(e.offsetX, e.offsetY);
+    drawCtx.stroke();
+
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+});
+
+drawCanvas.addEventListener("mouseup", () => isDrawing = false);
+drawCanvas.addEventListener("mouseleave", () => isDrawing = false);
+
+function clearDrawCanvas() {
+    drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+}
+</script>
+
+</body>
+</html>

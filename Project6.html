@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Image Swap Portfolio</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url(./images/digital.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .carousel {
+    margin-top: 0px;
+    position: relative;
+    width: 900px;
+    height: 350px;
+    perspective: 10000px;
+  }
+
+  .item {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    text-align: center;
+  }
+
+  .item img {
+    display: block;
+    max-height: 250px;
+    width: auto;
+    border-radius: 10px;
+    margin-top: 5px;
+  
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    color: rgb(218, 234, 249);
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(51, 42, 79);
+  }
+
+  .middle .title {
+    opacity: 1;
+  }
+
+  .far-left {
+    transform: translate(-450px, -50%) scale(0.6) rotateY(45deg);
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  .left {
+    transform: translate(-280px, -50%) scale(0.8) rotateY(30deg);
+    opacity: 0.7;
+    z-index: 2;
+  }
+
+  .middle {
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    opacity: 1;
+    z-index: 5;
+  }
+
+  .right {
+    transform: translate(180px, -50%) scale(0.8) rotateY(-30deg);
+    opacity: 0.7;
+    z-index: 2;
+  }
+
+  .far-right {
+    transform: translate(350px, -50%) scale(0.6) rotateY(-45deg);
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  .swap-button {
+  margin-top: -30px;
+  width: 250px; 
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.swap-button:hover {
+  transform: scale(1.1);
+}
+
+  .back-container {
+    margin-top: 0px;
+    margin-bottom: -200px;
+     align-items: center;
+      width: 100%;
+      text-align: center;
+      z-index: 300;
+    }
+
+    .back-button {
+      width: 160px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+    }
+
+      .decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20; 
+  pointer-events: none;
+}
+
+.decor img {
+  width: 1550px;
+  height: 750px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="carousel">
+  <div class="item far-left" data-title="Lemon Tea">
+    <div class="title">Lemon Tea</div>
+    <img src="./images/lemon tea.png" alt="Lemon Tea">
+  </div>
+
+  <div class="item left" data-title="Landscape">
+    <div class="title">Landscape</div>
+    <img src="./images/landscape final.png" alt="Landscape">
+  </div>
+
+  <div class="item middle" data-title="Main Design">
+    <div class="title">Reflection</div>
+    <img src="./images/one.png" alt="Main Design">
+  </div>
+
+  <div class="item right" data-title="Independence Day">
+    <div class="title">Independence Day</div>
+    <img src="./images/independence day.png" alt="Independence Day">
+  </div>
+
+  <div class="item far-right" data-title="Creative Art">
+    <div class="title">Power</div>
+    <img src="./images/4.png" alt="Creative Art">
+  </div>
+</div>
+<img src="./images/next button.png" id="swapBtn" class="swap-button" alt="Next">
+
+    
+   <div class="back-container">
+      <a href="Portofolio.html">
+        <img src="images/back button.png" alt="Back" class="back-button">
+      </a>
+    </div>
+
+    
+<div class="decor">
+    
+        <img src="images/digital illustration decor.png">
+      
+    </div>
+
+
+<script>
+  const items = document.querySelectorAll('.carousel .item');
+  const positions = ['far-left', 'left', 'middle', 'right', 'far-right'];
+
+  document.getElementById('swapBtn').addEventListener('click', () => {
+    positions.unshift(positions.pop());
+    items.forEach((item, index) => {
+      item.className = `item ${positions[index]}`;
+    });
+  });
+</script>
+
+</body>
+</html>

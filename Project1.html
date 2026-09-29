@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Poster Portfolio - 3D Column</title>
+
+  <style>
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+  background-image: url(images/poster.png);
+
+  background-size: cover;
+
+  background-attachment: fixed;
+
+  margin: 0;
+
+  padding: 60px;
+
+  min-height: 100vh;
+
+  margin-left: 200px;
+
+  margin-top: 20px;
+
+  font-family:
+    Cambria,
+    Cochin,
+    Georgia,
+    Times,
+    'Times New Roman',
+    serif;
+}
+
+
+/* =========================
+   MAIN PORTFOLIO
+========================= */
+
+.portfolio-container {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 100px;
+
+  min-height: 500px;
+
+  margin-left: 150px;
+
+  position: relative;
+
+  z-index: 170;
+}
+
+
+/* =========================
+   3D COLUMN
+========================= */
+
+.column-container {
+
+  margin-top: 130px;
+
+  width: 220px;
+
+  height: 370px;
+
+  perspective: 1200px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+
+.column {
+
+  width: 100%;
+
+  height: 100%;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 1s ease-in-out;
+}
+
+
+.column img {
+
+  position: absolute;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  backface-visibility: hidden;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+
+  width: 520px;
+
+  max-width: 520px;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  color: #333;
+
+  background-image:
+    url("./images/note bg.png");
+
+  background-size: cover;
+
+  padding: 35px;
+
+  border-radius: 5px;
+
+  margin-top: 150px;
+
+  margin-left: 170px;
+
+  box-shadow:
+    0 8px 16px rgba(0,0,0,0.1);
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  z-index: 50;
+}
+
+
+/* =========================
+   POSTER BUTTONS
+========================= */
+
+.poster-buttons {
+
+  position: relative;
+
+  margin-top: 50px;
+
+  margin-left: 40px;
+
+  width: 750px;
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  z-index: 100;
+}
+
+
+.poster-button {
+
+  width: 48px;
+
+  height: 36px;
+
+  border: none;
+
+  background: white;
+
+  border-radius: 8px;
+
+  font-family:
+    Cambria,
+    Georgia,
+    serif;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 8px rgba(0,0,0,0.2);
+
+  transition:
+    all 0.25s ease;
+}
+
+
+.poster-button:hover {
+
+  transform:
+    translateY(-3px)
+    scale(1.05);
+}
+
+
+.poster-button.active {
+
+  background: #694285;
+
+  color: rgb(216, 206, 226);
+
+  transform:
+    scale(1.08);
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-container {
+
+  position: relative;
+
+  margin-top: 30px;
+
+  margin-left: 40px;
+
+  width: 750px;
+
+  text-align: center;
+
+  z-index: 300;
+}
+
+
+.back-button {
+
+  width: 160px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s;
+}
+
+
+.back-button:hover {
+
+  transform:
+    scale(1.05);
+}
+
+
+/* =========================
+   DECORATION
+========================= */
+
+.decor {
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+
+.decor img {
+
+  width: 1550px;
+
+  height: 830px;
+
+}
+
+
+/* =========================
+   OPTIONAL:
+   MAKE DESCRIPTION SCROLL
+   IF TEXT GETS TOO LONG
+========================= */
+
+.description {
+
+  max-height: 400px;
+
+  overflow-y: auto;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MAIN PORTFOLIO
+===================================================== -->
+
+<div class="portfolio-container">
+
+
+  <!-- =========================
+       3D POSTER COLUMN
+  ========================= -->
+
+  <div class="column-container">
+
+    <div
+      class="column"
+      id="column"
+    >
+
+
+      <!-- POSTER 1 -->
+
+      <img
+        src="./images/poster product.png"
+        alt="Poster 1"
+      >
+
+
+      <!-- POSTER 2 -->
+
+      <img
+        src="./images/Undangan Intern Valentine.png"
+        alt="Poster 2"
+      >
+
+
+      <!-- POSTER 3 -->
+
+      <img
+        src="./images/Final-Leg-Rowing-1.png"
+        alt="Poster 3"
+      >
+
+
+      <!-- POSTER 4 -->
+
+      <img
+        src="./images/mandiri.png"
+        alt="Poster 4"
+      >
+
+
+      <!-- POSTER 5 -->
+
+      <img
+        src="./images/Day 1 graphic design.png"
+        alt="Poster 5"
+      >
+
+
+      <!-- POSTER 6 -->
+
+      <img
+        src="./images/Day 5.png"
+        alt="Poster 6"
+      >
+
+
+      <!-- POSTER 7 -->
+
+      <img
+        src="./images/Day 10 flower.png"
+        alt="Poster 7"
+      >
+
+
+      <!-- POSTER 8 -->
+
+      <img
+        src="./images/Day 14.png"
+        alt="Poster 8"
+      >
+
+
+      <!-- POSTER 9 -->
+
+      <img
+        src="./images/Day 16.png"
+        alt="Poster 9"
+      >
+
+
+      <!-- POSTER 10 -->
+
+      <img
+        src="./images/Day 7.png"
+        alt="Poster 10"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       DESCRIPTION
+  ========================= -->
+
+  <div
+    class="description"
+    id="description"
+  ></div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     POSTER BUTTONS
+===================================================== -->
+
+<div class="poster-buttons">
+
+
+  <button
+    class="poster-button active"
+    onclick="showPoster(0)"
+  >
+    1
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(1)"
+  >
+    2
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(2)"
+  >
+    3
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(3)"
+  >
+    4
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(4)"
+  >
+    5
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(5)"
+  >
+    6
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(6)"
+  >
+    7
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(7)"
+  >
+    8
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(8)"
+  >
+    9
+  </button>
+
+
+  <button
+    class="poster-button"
+    onclick="showPoster(9)"
+  >
+    10
+  </button>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     BACK BUTTON
+===================================================== -->
+
+<div class="back-container">
+
+  <a href="Portofolio.html">
+
+    <img
+      src="images/back button.png"
+      alt="Back"
+      class="back-button"
+    >
+
+  </a>
+
+</div>
+
+
+
+<!-- =====================================================
+     DECORATION
+===================================================== -->
+
+<div class="decor">
+
+  <img
+    src="images/poster decor.png"
+    alt=""
+  >
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   DESCRIPTIONS
+===================================================== */
+
+const descriptions = [
+
+
+/* POSTER 1 */
+
+`This is the brand-building project I created to further develop my graphic design skills. I decided to design a beverage brand and eventually settled on a soda drink. The logo is created in a bubbly style with bright colors to emphasize the fizziness of the soda and to make the brand feel more friendly and appealing to kids. I used a consistent color palette because I believed the bright pink would give the product a more youthful and vibrant appearance. I also added strawberry slices to highlight the use of fresh ingredients. To make the drink feel even more refreshing, I included splashes of pink liquid in the design.`,
+
+
+/* POSTER 2 */
+
+`This was my very first project as a member of the journalism club "Mandiri" at my school. Along with the other juniors, I was tasked with planning a Valentine’s Day intern event. I was placed in the publication and documentation team. Since I was the only layouter on the team, I proposed creating an invitation poster for every member of the organization, and my team agreed. I decided to design the poster as simply as possible. I experimented with partially displaying the event date both in front of and behind the red flower placed at the center as the focal point.`,
+
+
+/* POSTER 3 */
+
+`This poster presents a vibrant, modern illustration inspired by traditional fishing culture and competitive spirit. At the center, a strong female rower steers a wooden boat through dynamic, curling waves, her paddle cutting decisively through the water. A fish trap filled with lively fish rises dramatically from the sea, while another figure in the background raises a checkered flag, suggesting a race or sporting challenge. The color palette is bold and playful, blending warm sunset tones with deep ocean blues to create a sense of movement, optimism, and strength. Stylized shapes and flat graphic elements give the artwork a contemporary look, while cultural details, such as the fishing tools, boat, and Chinese characters on the banner anchor the piece in tradition. Overall, the poster celebrates teamwork, resilience, and the fusion of heritage with modern techno-sport aesthetics, capturing the spirit of “Legend of the Rower.”`,
+
+
+/* POSTER 4 */
+
+`While I was a member of the Mandiri organization, I worked on a project where I was tasked with designing a new poster for the organization "Regeneration," or recruiting new members. Every organization has a theme for each of their annual recruitment events. Mandiri's recruitment theme for this year is vintage retro. I started by choosing a color scheme for this picture, then I made banners with a retro feel and looked for retro-styled fonts.In order to tie the theme to be "more to the future," I also made the decision to include some futuristic components in the form of glitches.`,
+
+
+/* POSTER 5 */
+
+`A lyric poster of Carousel by Laufey`,
+
+
+/* POSTER 6 */
+
+`"A poster showing the feeling by many artist Bouof creativity slowly slipping away the longer you have been in the industry"`,
+
+
+/* POSTER 7 */
+
+`"Bouquet"`,
+
+
+/* POSTER 8 */
+
+`"Daruma" A tradition of filling one eye and filling the other eye when you reached the goal`,
+
+
+/* POSTER 9 */
+
+`"Celtic Farewell" Opening a window allowing departed sould to go to the other side...`,
+
+
+/* POSTER 10 */
+
+`The process of adapting to a new country not only on your social and education life but also your stomach`
+
+];
+
+
+
+/* =====================================================
+   BASIC SETTINGS
+===================================================== */
+
+const totalFaces = 10;
+
+let currentIndex = 0;
+
+
+/* =====================================================
+   GET ELEMENTS
+===================================================== */
+
+const column =
+  document.getElementById("column");
+
+
+const descriptionEl =
+  document.getElementById("description");
+
+
+const buttons =
+  document.querySelectorAll(".poster-button");
+
+
+const posters =
+  document.querySelectorAll(".column img");
+
+
+
+/* =====================================================
+   10-SIDED COLUMN
+===================================================== */
+
+
+/*
+   360 degrees / 10 posters
+   = 36 degrees per poster
+*/
+
+const angle =
+  360 / totalFaces;
+
+
+/*
+   Poster width = 220px
+
+   This calculates the correct
+   distance from the center.
+*/
+
+const radius =
+  220 /
+  (
+    2 *
+    Math.tan(
+      Math.PI / totalFaces
+    )
+  );
+
+
+
+/* =====================================================
+   POSITION ALL POSTERS
+===================================================== */
+
+posters.forEach(
+  (poster, index) => {
+
+    const rotation =
+      angle * index;
+
+
+    poster.style.transform =
+      `rotateY(${rotation}deg)
+       translateZ(${radius}px)`;
+
+  }
+);
+
+
+
+/* =====================================================
+   SHOW POSTER
+===================================================== */
+
+function showPoster(index) {
+
+
+  currentIndex = index;
+
+
+  /* Rotate the 3D column */
+
+  column.style.transform =
+    `rotateY(${-angle * index}deg)`;
+
+
+  /* Change description */
+
+  descriptionEl.innerHTML =
+    descriptions[index]
+      .replace(/\n/g, "<br><br>");
+
+
+  /* Update active button */
+
+  buttons.forEach(
+    (button, buttonIndex) => {
+
+      button.classList.toggle(
+        "active",
+        buttonIndex === index
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   START WITH POSTER 1
+===================================================== */
+
+showPoster(0);
+
+
+</script>
+
+
+</body>
+
+</html>
+```

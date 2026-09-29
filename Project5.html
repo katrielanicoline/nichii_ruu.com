@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Image Gallery</title>
+<style>
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background-image: url(./images/drawing\ bg.png);
+    background-size: cover;
+    position: relative;
+  }
+
+  .gallery {
+    margin-top: 170px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 20px;
+    z-index: 10;
+    position: relative;
+  }
+
+  .gallery img {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0.3;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  .back-container {
+    position: fixed;
+    bottom: 180px;
+    width: 100%;
+    text-align: center;
+    z-index: 300;
+  }
+
+  .back-button {
+    cursor: pointer;
+    height: 40px;
+    transition: transform 0.3s;
+  }
+
+  .back-button:hover {
+    transform: scale(1.05);
+  }
+
+  .decor {
+    position: absolute;
+    top: -150px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  .decor img {
+    width: 100%;
+    height: auto;
+    max-width: 1550px;
+    max-height: 830px;
+    display: block;
+    margin: 0 auto;
+    opacity: 1; 
+  }
+</style>
+</head>
+<body>
+
+<div class="back-container">
+  <a href="Portofolio.html">
+    <img src="images/back button.png" alt="Back" class="back-button">
+  </a>
+</div>
+
+<div class="decor">
+  <img src="images/drawing decor.png" alt="Decor">
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<script>
+window.onload = function() {
+  
+  const images = [
+    "./images/cec.png",
+    "./images/protect our ocean.jpg",
+    "./images/reflection.png"
+  ];
+
+  const galleryContainer = document.getElementById('gallery');
+
+  images.forEach(src => {
+    let img = document.createElement('img');
+    img.src = src;
+
+    img.addEventListener('click', function() {
+      if (!this.style.transform || this.style.transform === 'rotate(0deg)') {
+        this.style.transform = 'rotate(360deg)';
+      } else {
+        this.style.transform = 'rotate(0deg)';
+      }
+      console.log(`You clicked on ${this.src}`);
+    });
+
+    img.addEventListener('mouseenter', function() {
+      this.style.opacity = 1;
+    });
+
+    img.addEventListener('mouseleave', function() {
+      this.style.opacity = 0.3;
+    });
+
+    galleryContainer.appendChild(img);
+  });
+};
+</script>
+
+</body>
+</html>

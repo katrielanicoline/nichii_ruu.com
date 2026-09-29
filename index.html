@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       COVER
+    ========================= */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+
+    .go-button {
+      position: fixed;
+      bottom: 3%;
+      right: 3%;
+      width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      z-index: 1000;
+    }
+
+    .go-button:hover {
+      transform: scale(1.05);
+    }
+
+
+    /* =========================
+       ROOM NAVIGATION
+    ========================= */
+
+    .room-section {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1920 / 1080;
+
+      background-image: url(./images/room.png);
+
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================
+       CLICKABLE ROOM IMAGES
+    ========================= */
+
+    .room-link {
+      position: absolute;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .room-link img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .room-link:hover {
+      transform: scale(1.08);
+    }
+
+
+    /* =========================
+       HOVER DESCRIPTIONS
+    ========================= */
+
+    .room-description {
+      position: absolute;
+
+      bottom: -60px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 180px;
+
+      padding: 9px 12px;
+
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+
+      font-size: 14px;
+      line-height: 1.3;
+      text-align: center;
+
+      border-radius: 8px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 0.3s ease,
+        bottom 0.3s ease,
+        top 0.3s ease;
+
+      z-index: 1000;
+
+      pointer-events: none;
+    }
+
+    /* =========================
+       NORMAL DESCRIPTIONS
+       Books, Layouts, Statue
+    ========================= */
+
+    .room-link:hover .room-description {
+      opacity: 1;
+      visibility: visible;
+      bottom: -65px;
+    }
+
+
+    /* =========================
+       DESCRIPTIONS ON TOP
+       Console, Canvas, Digital Painting
+    ========================= */
+
+    .room-link-2 .room-description,
+    .room-link-3 .room-description,
+    .room-link-5 .room-description {
+      bottom: auto;
+      top: -65px;
+    }
+
+    .room-link-2:hover .room-description,
+    .room-link-3:hover .room-description,
+    .room-link-5:hover .room-description {
+      opacity: 1;
+      visibility: visible;
+      bottom: auto;
+      top: -65px;
+    }
+
+
+    /* =========================
+       SIX NAVIGATION BUTTONS
+    ========================= */
+
+    .room-link-1 {
+      left: 330px;
+      top: 500px;
+      width: 12%;
+      z-index: 1;
+    }
+
+    .room-link-2 {
+      left: 1260px;
+      top: 530px;
+      width: 12%;
+      z-index: 1;
+    }
+
+    .room-link-3 {
+      left: 960px;
+      top: 480px;
+      width: 15%;
+      z-index: 1;
+    }
+
+    /* LAYOUTS */
+
+    .room-link-4 {
+      left: 300px;
+      top: 100px;
+      width: 12%;
+      z-index: 2;
+    }
+
+    .room-link-5 {
+      left: 550px;
+      top: 180px;
+      width: 30%;
+      z-index: 1;
+    }
+
+    /* STATUE - in front of layouts */
+
+    .room-link-6 {
+      left: 120px;
+      bottom: 390px;
+      width: 10%;
+      z-index: 3;
+    }
+
+
+    /* =========================
+       DRAWING PERSON
+       ALWAYS IN FRONT
+    ========================= */
+
+    .drawing-person {
+      position: absolute;
+      left: 100px;
+      margin-top: -1100px;
+      width: 60px;
+      transform: scale(0.7);
+      z-index: 999;
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       DIVIDER
+    ========================= */
+
+    .divider {
+      height: 30px;
+      background-image: url(./images/divider.png);
+      background-size: contain;
+    }
+
+
+    /* =========================
+       SCROLL GALLERY
+    ========================= */
+
+    .scroll-gallery {
+      position: relative;
+      width: 100%;
+      padding: 80px 0;
+      overflow-x: auto;
+
+      background-image: url(images/cabinet.png);
+      background-size: contain;
+      background-color: #9e7562;
+    }
+
+    .gallery-track {
+      display: flex;
+      padding: 0px 100px;
+    }
+
+    .gallery-track img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .decor-image {
+      position: absolute;
+      left: 0;
+      top: -10px;
+      width: 2230px;
+      height: 430px;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+
+    /* =========================
+       CONTACT SECTION
+    ========================= */
+
+    .contact {
+      background-image: url(./images/green\ board.png);
+      text-align: center;
+      background-size: contain;
+    }
+
+    .contact img {
+      height: 30%;
+      width: 30%;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       COVER
+  ========================= -->
+
+  <section class="hero">
+
+    <img src="images/cover 2.png"
+         alt="Main Image"
+         class="hero-image">
+
+    <a href="Portofolio.html">
+      <img src="images/cover button.png"
+           alt="Let's Go"
+           class="go-button">
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       ROOM NAVIGATION
+  ========================= -->
+
+  <section class="room-section">
+
+
+    <!-- =========================
+         BOOKS
+    ========================= -->
+
+    <a href="Project3.html"
+       class="room-link room-link-1">
+
+      <img src="./images/books.png"
+           alt="Books">
+
+      <span class="room-description">
+        Graphic design and publication
+      </span>
+
+    </a>
+
+
+    <!-- =========================
+         CONSOLE
+    ========================= -->
+
+    <a href="Project8.html"
+       class="room-link room-link-2">
+
+      <span class="room-description">
+        Interactive programming and gaming
+      </span>
+
+      <img src="./images/CONSOLE.png"
+           alt="Console">
+
+    </a>
+
+
+    <!-- =========================
+         CANVAS
+    ========================= -->
+
+    <a href="Project2.html"
+       class="room-link room-link-3">
+
+      <img src="./images/canvas.png"
+           alt="Canvas">
+
+      <span class="room-description">
+        
+        Traditional art
+      </span>
+
+    </a>
+
+
+    <!-- =========================
+         LAYOUTS
+    ========================= -->
+
+    <a href="Project1.html"
+       class="room-link room-link-4">
+
+      <img src="./images/layouts.png"
+           alt="Layouts">
+
+      <span class="room-description">
+        Layout and visual communication
+      </span>
+
+    </a>
+
+
+    <!-- =========================
+         DIGITAL PAINTING
+    ========================= -->
+
+    <a href="Project6.html"
+       class="room-link room-link-5">
+
+      <img src="images/digital painting.png"
+           alt="Digital Painting">
+
+      <span class="room-description">
+        Digital painting and visual art
+      </span>
+
+    </a>
+
+
+    <!-- =========================
+         STATUE
+    ========================= -->
+
+    <a href="Project4.html"
+       class="room-link room-link-6">
+
+      <img src="images/statue.png"
+           alt="Statue">
+
+      <span class="room-description">
+        3D modeling and sculpture
+      </span>
+
+    </a>
+
+
+    <!-- =========================
+         DRAWING PERSON
+    ========================= -->
+
+    <a class="drawing-person">
+
+      <img src="./images/drawing person.png"
+           alt="Drawing Person">
+
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       DIVIDER
+  ========================= -->
+
+  <section class="divider"></section>
+
+
+  <!-- =========================
+       SCROLL GALLERY
+  ========================= -->
+
+  <section class="scroll-gallery">
+
+    <img src="images/cabinet decor.png"
+         alt="Decor"
+         class="decor-image">
+
+    <div class="gallery-track">
+
+      <img src="images/brand building.png" alt="">
+      <img src="images/CEC.png" alt="">
+      <img src="images/independence day.png" alt="">
+      <img src="images/landscape final.png" alt="">
+      <img src="images/lemon tea.png" alt="">
+      <img src="images/one.png" alt="">
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       DIVIDER
+  ========================= -->
+
+  <section class="divider"></section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact">
+
+    <img src="images/contact me.png"
+         alt="Decor"
+         class="contact-img">
+
+  </section>
+
+</body>
+</html>

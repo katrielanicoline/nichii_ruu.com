@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch Portfolio</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url(images/sketch\ background.png);
+    background-size: cover;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .sketch-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 150px;
+    justify-content: center;
+  }
+
+  .sketch {
+    width: 270px;
+    height: 400px;
+    perspective: 800px;
+    cursor: pointer;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    position: relative;
+
+    --rx: 0deg;
+    --ry: 0deg;
+
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+  }
+
+  .card.flipped {
+    transform: rotateX(var(--rx)) rotateY(calc(180deg + var(--ry)));
+  }
+
+  .card img,
+  .card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    object-fit: cover;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+
+  .card .back {
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;                  
+    transform: rotateY(180deg);
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    backface-visibility: hidden;
+
+    height: 100%;                
+    box-sizing: border-box;    
+    overflow-y: auto;            
+  }
+
+  .card .back .title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .card .back .desc {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .info {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 250px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 8px;
+    text-align: right;
+    font-family: 'Times New Roman', Times, serif;
+    pointer-events: none; 
+  }
+
+  .back-container {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 300;
+  }
+
+  .back-button {
+    width: 160px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20; 
+  pointer-events: none;
+}
+
+.decor img {
+  width: 1550px;
+  height: 720px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="sketch-grid">
+  <!-- SKETCH 1 -->
+  <div class="sketch">
+    <div class="card">
+      <img src="./images/sketch 3.png" alt="Sketch 1">
+      <div class="back">
+        <div class="title">Vintage Fashion Studies</div>
+        <div class="desc">
+          A collection of retro dress silhouettes and details, capturing early–mid 20th century fashion with elegant poses and tailored forms.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKETCH 2 -->
+  <div class="sketch">
+    <div class="card">
+      <img src="./images/sketch 5.png" alt="Sketch 2">
+      <div class="back">
+        <div class="title">Streetfront Architecture</div>
+        <div class="desc">
+          A hand-drawn urban storefront scene with layered signage and textures, blending traditional shop-house architecture with everyday street life.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKETCH 3 -->
+  <div class="sketch">
+    <div class="card">
+      <img src="./images/sketch 2 (2).png" alt="Sketch 3">
+      <div class="back">
+        <div class="title">Victorian Dress Illustration</div>
+        <div class="desc">
+          Detailed studies of Victorian-era gowns, focusing on volume, ornamentation, and textile layering to emphasize historical craftsmanship.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKETCH 4 -->
+  <div class="sketch">
+    <div class="card">
+      <img src="./images/sketch 4.png" alt="Sketch 4">
+      <div class="back">
+        <div class="title">Botanical Typography</div>
+        <div class="desc">
+          An intricate floral illustration surrounding decorative lettering, combining botanical sketches with ornamental, vintage-style typography.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLICK INFO BOX -->
+<div class="info" id="eventInfo"></div>
+
+<!-- BACK BUTTON -->
+<div class="back-container">
+  <a href="Portofolio.html">
+    <img src="images/back button.png" alt="Back" class="back-button">
+  </a>
+</div>
+
+<div class="decor">
+    
+        <img src="images/sketch decor.png">
+      
+    </div>
+
+<script>
+  const infoBox = document.getElementById("eventInfo");
+
+  document.querySelectorAll(".sketch").forEach(sketch => {
+    const card = sketch.querySelector(".card");
+    const img = sketch.querySelector("img");
+
+    sketch.addEventListener("mouseleave", () => {
+      card.style.setProperty("--rx", `0deg`);
+      card.style.setProperty("--ry", `0deg`);
+    });
+
+    sketch.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
+  });
+</script>
+
+</body>
+</html>

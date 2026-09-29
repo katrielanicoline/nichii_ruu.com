@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Projects</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+  font-family: 'Start Story'; 
+  src: url('Start Story.otf') format('woff2'),
+       url('Start Story.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+    body {
+      min-height: 100vh;
+      background-image: url(images/portfolio\ back.png);
+      background-size: 1550px 720px;
+      font-family: 'Start Story';
+      position: relative;
+    }
+
+    .board {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+   .note {
+  position: absolute;
+  width: 180px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 5; /* lower than decor */
+}
+
+    .note img {
+      width: 100%;
+      display: block;
+    }
+
+    .note:hover {
+      transform: scale(1.1) rotate(0deg);
+      z-index: 10;
+    }
+
+    .n1 { top: 10%; left: 10%; transform: rotate(-8deg); }
+    .n2 { top: 10%; left: 45%; transform: rotate(6deg); }
+    .n3 { top: 15%; left: 75%; transform: rotate(-4deg); }
+
+    .n4 { top: 30%; left: 25%; transform: rotate(7deg); }
+    .n5 { top: 40%; left: 40%; transform: rotate(-10deg); }
+    .n6 { top: 30%; left: 60%; transform: rotate(5deg); }
+
+    .n7 { top: 60%; left: 10%; transform: rotate(-6deg); }
+    .n8 { top: 65%; left: 40%; transform: rotate(9deg); }
+    .n9 { top: 70%; left: 60%; transform: rotate(-3deg); }
+    .n10 { top: 55%; left: 80%; transform: rotate(4deg); }
+
+    /* ---------- BACK BUTTON ---------- */
+
+    .back-container {
+      position: absolute;
+      bottom: 20px;
+      left: 600px;
+      width: 100%;
+      text-align: center;
+      z-index: 300;
+    }
+
+    .back-button {
+      width: 160px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+    }
+
+    /* ---------- MENU BUTTON ---------- */
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 26px;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  z-index: 300;
+}
+
+
+.slide-sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+
+  background-image: url(images/sidebar.png);
+  background-size: cover;        
+  
+  background-position: center;   
+  background-repeat: no-repeat;
+
+  padding: 90px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  transition: left 0.4s ease;
+  z-index: 200;
+}
+
+.slide-sidebar.open {
+  left: 0;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 48px;
+  cursor: pointer;
+  z-index: 300;
+}
+
+.menu-btn img {
+  width: 100%;
+  display: block;
+}
+
+.decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20; 
+  pointer-events: none;
+}
+
+.decor img {
+  width: 1550px;
+  height: 720px;
+}
+.decor2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 21; 
+  pointer-events: none;
+}
+
+.decor2 img {
+  width: 1550px;
+  height: 720px;
+}
+.slide-sidebar.open {
+  left: 0;
+}
+
+.sticky-img {
+  display: block;
+  width: 200px;
+  transition: transform 0.25s;
+}
+
+.sticky-img img {
+  width: 100%;
+  display: block;
+}
+
+/* Rotations */
+.s1 { transform: rotate(-4deg); }
+.s2 { transform: rotate(3deg); }
+.s3 { transform: rotate(-2deg); }
+.s4 { transform: rotate(4deg); }
+.s5 { transform: rotate(-3deg); }
+
+.sticky-img:hover {
+  transform: scale(1.1) rotate(0deg);
+}
+
+
+
+  </style>
+</head>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("open");
+  }
+</script>
+
+<body>
+<!-- Menu Button -->
+<div class="menu-btn" onclick="toggleMenu()">
+  <img src="images/menu.png" >
+</div>
+<!-- Sliding Sidebar -->
+<div class="slide-sidebar" id="sidebar">
+
+  <a href="index.html" class="sticky-img s1">
+    <img src="./images/crayon 1.png" alt="Home">
+  </a>
+
+  <a href="Portofolio.html" class="sticky-img s2">
+    <img src="./images/crayon 2.png" alt="Projects">
+  </a>
+
+  <a href="about.html" class="sticky-img s3">
+    <img src="./images/crayon 3.png" alt="About Me">
+  </a>
+
+  <a href="skills.html" class="sticky-img s4">
+    <img src="./images/crayon 4.png" alt="Skills">
+  </a>
+
+  <a href="contact.html" class="sticky-img s5">
+    <img src="./images/crayon 5.png" alt="Contact">
+  </a>
+
+</div>
+
+
+  <div class="board">
+
+    <a href="Project1.html" class="note n1"><img src="images/sticky note 1.png"></a>
+    <a href="Project2.html" class="note n2"><img src="images/sticky note 3.png"></a>
+    <a href="Project3.html" class="note n3"><img src="images/sticky note 5.png"></a>
+    <a href="Project4.html" class="note n4"><img src="images/sticky note 2.png"></a>
+    <a href="project5.html" class="note n5"><img src="images/sticky note 7.png"></a>
+    <a href="Project6.html" class="note n6"><img src="images/sticky note 4.png"></a>
+    <a href="Project7.html" class="note n7"><img src="images/sticky note 6.png"></a>
+    <a href="Project8.html" class="note n8"><img src="images/sticky note 9.png"></a>
+    <a href="Project9.html" class="note n9"><img src="images/sticky note 8.png"></a>
+    <a href="Project10.html" class="note n10"><img src="images/sticky note 10.png"></a>
+
+    <!-- Back button -->
+    <div class="back-container">
+      <a href="index.html">
+        <img src="images/back button.png" alt="Back" class="back-button">
+      </a>
+    </div>
+
+    <div class="decor">
+    
+        <img src="images/decor.png">
+      
+    </div>
+        <div class="decor2">
+    
+        <img src="images/decor 2.png">
+      
+    </div>
+
+  </div>
+</body>
+</html>

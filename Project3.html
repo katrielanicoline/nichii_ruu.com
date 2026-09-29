@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magazine Portfolio - HTML Magazines</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url(images/magazine.png);
+    background-size: cover;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .portfolio-container {
+    margin-top: 125px;
+    display: flex;
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .magazines {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .magazine {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    perspective: 800px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .magazine img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .magazine:hover {
+    transform: scale(1.05);
+  }
+
+  .description-box {
+    margin-top: 100px;
+     margin-left: 200px;
+   height: 300px;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-radius: 12px;
+    justify-content: center;
+  }
+
+  .description-box h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .description-box p {
+    margin: 0;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+.back-container {
+      position: absolute;
+      bottom: -50px;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      z-index: 300;
+    }
+
+    .back-button {
+      width: 160px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+    }
+    
+      .decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.decor img {
+  width: 1550px;
+  height: 720px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="portfolio-container">
+
+  <!-- Left: Magazines -->
+  <div class="magazines">
+    <div class="magazine" data-title="Magazine 1" data-description="This magazine project explores the fusion of motivational design and modern editorial layout. The cover combines bold typography, hand-lettered elements, and playful illustrations to communicate themes of determination, resilience, and success. Paired with a fashion-inspired magazine layout, the design balances expressive visuals with structured composition. Clean grids, strong hierarchy, and carefully selected color palettes were used to maintain readability while keeping the layout visually engaging. This project highlights my ability to blend conceptual storytelling with contemporary magazine design.">
+      <img src="./images/magazine 1 (2).png" alt="Magazine 1">
+    </div>
+    <div class="magazine" data-title="Magazine 2" data-description="This editorial magazine spread is inspired by the iconic visual language of Yayoi Kusama, focusing on bold colors, organic shapes, and immersive patterns. The layout experiments with layering, contrast, and dynamic composition to create a visually striking reading experience. Text and imagery interact seamlessly, guiding the reader through the content without losing artistic impact. This project demonstrates my skills in creative editorial design, visual rhythm, and expressive art direction, while maintaining balance between aesthetics and readability.">
+      <img src="./images/magazine 2.jpg" alt="Magazine 2">
+    </div>
+  </div>
+
+  <!-- Right: Description -->
+  <div class="description-box" id="descriptionBox">
+    <h2>Hover or click a magazine</h2>
+    <p>Description will appear here.</p>
+  </div>
+
+</div>
+<div class="back-container">
+      <a href="Portofolio.html">
+        <img src="images/back button.png" alt="Back" class="back-button">
+      </a>
+    </div>
+
+    <div class="decor">
+    
+        <img src="images/magazine decor.png">
+      
+    </div>
+<script>
+  const descriptionBox = document.getElementById('descriptionBox');
+  const magazines = document.querySelectorAll('.magazine');
+
+  magazines.forEach(mag => {
+    mag.addEventListener('mouseover', () => {
+      const title = mag.dataset.title;
+      const description = mag.dataset.description;
+      descriptionBox.innerHTML = `<h2>${title}</h2><p>${description}</p>`;
+    });
+
+    mag.addEventListener('click', () => {
+      const title = mag.dataset.title;
+      const description = mag.dataset.description;
+      descriptionBox.innerHTML = `<h2>${title}</h2><p>${description}</p>`;
+    });
+  });
+</script>
+
+</body>
+</html>

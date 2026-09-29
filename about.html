@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Me</title>
+
+  <style>
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: rgb(54, 32, 32);
+      position: relative;
+    }
+
+
+    /* =========================
+       ABOUT IMAGE
+    ========================= */
+
+    .about-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    /* =========================
+       MENU BUTTON
+    ========================= */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 26px;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  z-index: 300;
+}
+    .menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 48px;
+  cursor: pointer;
+  z-index: 300;
+}
+
+.menu-btn img {
+  width: 100%;
+  display: block;
+}
+
+    /* =========================
+       SLIDING SIDEBAR
+    ========================= */
+
+    .slide-sidebar {
+      position: fixed;
+
+      top: 0;
+      left: -280px;
+
+      width: 280px;
+      height: 100vh;
+
+      background-image: url("images/sidebar.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      padding: 90px 20px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+
+      transition: left 0.4s ease;
+
+      z-index: 200;
+    }
+
+    .slide-sidebar.open {
+      left: 0;
+    }
+
+
+    /* =========================
+       SIDEBAR BUTTONS
+    ========================= */
+
+    .sticky-img {
+      display: block;
+      width: 200px;
+      transition: transform 0.25s;
+    }
+
+    .sticky-img img {
+      width: 100%;
+      display: block;
+    }
+
+
+    /* =========================
+       SIDEBAR ROTATIONS
+    ========================= */
+
+    .s1 {
+      transform: rotate(-4deg);
+    }
+
+    .s2 {
+      transform: rotate(3deg);
+    }
+
+    .s3 {
+      transform: rotate(-2deg);
+    }
+
+    .s4 {
+      transform: rotate(4deg);
+    }
+
+    .s5 {
+      transform: rotate(-3deg);
+    }
+
+
+    /* =========================
+       SIDEBAR HOVER
+    ========================= */
+
+    .sticky-img:hover {
+      transform: scale(1.1) rotate(0deg);
+    }
+
+
+    /* =========================
+       BACK BUTTON
+    ========================= */
+
+    .back-container {
+      position: fixed;
+
+      bottom: 20px;
+      right: 10%;
+
+      scale: 1.2;
+
+      text-align: center;
+
+      z-index: 300;
+
+      pointer-events: none;
+    }
+
+    .back-container a {
+      pointer-events: auto;
+    }
+
+    .back-button {
+      width: 160px;
+
+      cursor: pointer;
+
+      transition: transform 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+    }
+
+
+    /* =========================
+       SOCIAL ICONS
+    ========================= */
+
+    .social-link {
+      position: absolute;
+      z-index: 100;
+
+      display: block;
+
+      cursor: pointer;
+
+      transition: transform 0.3s;
+    }
+
+    .social-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .social-link:hover {
+      transform: scale(1.1);
+    }
+
+
+    /* =========================
+       INSTAGRAM
+       CHANGE TOP / LEFT HERE
+    ========================= */
+
+    .instagram {
+      top: 21%;
+      left: 20.5%;
+
+      width: 10%;
+    }
+
+
+    /* =========================
+       EMAIL
+       CHANGE TOP / LEFT HERE
+    ========================= */
+
+    .email {
+      top: 23.2%;
+      left: 20.6%;
+
+      width: 20%;
+    }
+
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       MENU BUTTON
+  ========================= -->
+
+  <div class="menu-btn" onclick="toggleMenu()">
+
+    <img
+      src="images/menu.png"
+      alt="Menu"
+    >
+
+  </div>
+
+
+
+  <!-- =========================
+       SLIDING SIDEBAR
+  ========================= -->
+
+  <div class="slide-sidebar" id="sidebar">
+
+
+    <!-- HOME -->
+
+    <a
+      href="index.html"
+      class="sticky-img s1"
+    >
+
+      <img
+        src="images/crayon 1.png"
+        alt="Home"
+      >
+
+    </a>
+
+
+
+    <!-- PORTFOLIO -->
+
+    <a
+      href="Portofolio.html"
+      class="sticky-img s2"
+    >
+
+      <img
+        src="images/crayon 2.png"
+        alt="Projects"
+      >
+
+    </a>
+
+
+
+    <!-- ABOUT ME -->
+
+    <a
+      href="about.html"
+      class="sticky-img s3"
+    >
+
+      <img
+        src="images/crayon 3.png"
+        alt="About Me"
+      >
+
+    </a>
+
+
+
+    <!-- SKILLS -->
+
+    <a
+      href="skills.html"
+      class="sticky-img s4"
+    >
+
+      <img
+        src="images/crayon 4.png"
+        alt="Skills"
+      >
+
+    </a>
+
+
+
+    <!-- CONTACT -->
+
+    <a
+      href="contact.html"
+      class="sticky-img s5"
+    >
+
+      <img
+        src="images/crayon 5.png"
+        alt="Contact"
+      >
+
+    </a>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       ABOUT PAGE IMAGE
+  ========================= -->
+
+  <img
+    src="images/about.png"
+    alt="About Me"
+    class="about-image"
+  >
+
+
+
+  <!-- =========================
+       INSTAGRAM
+  ========================= -->
+
+  <a
+    href="https://www.instagram.com/nichii_ruu/"
+    target="_blank"
+    class="social-link instagram"
+  >
+
+    <img
+      src="./images/instagram.png"
+      alt="Instagram"
+    >
+
+  </a>
+
+
+
+  <!-- =========================
+       EMAIL
+  ========================= -->
+
+  <a
+    href="mailto:katriela.nicoline@gmail.com"
+    class="social-link email"
+  >
+
+    <img
+      src="./images/email.png"
+      alt="Email"
+    >
+
+  </a>
+
+
+
+  <!-- =========================
+       BACK BUTTON
+  ========================= -->
+
+  <div class="back-container">
+
+    <a href="index.html">
+
+      <img
+        src="images/back button.png"
+        alt="Back"
+        class="back-button"
+      >
+
+    </a>
+
+  </div>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    function toggleMenu() {
+
+      document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
